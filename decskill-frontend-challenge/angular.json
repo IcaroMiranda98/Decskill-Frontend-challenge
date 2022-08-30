@@ -102,5 +102,7 @@
       }
     }
   },
-  "defaultProject": "decskill-frontend-challenge"
+  "cli": {
+    "analytics": false
+  }
 }
