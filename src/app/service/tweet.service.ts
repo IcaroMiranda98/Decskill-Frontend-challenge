@@ -19,7 +19,12 @@ export class TweetService {
         let tweets = JSON.parse(
             localStorage.getItem('tweets')!
         ) as Array<Tweet>;
-        tweets.map((x) => (x.dataTweet = new Date(x.dataTweet)));
+
+        if (tweets) {
+            tweets.map((x) => (x.dataTweet = new Date(x.dataTweet)));
+        } else {
+            tweets = new Array<Tweet>()
+        }
         return tweets;
     }
 
