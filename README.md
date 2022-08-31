@@ -1,3 +1,23 @@
+<h1 align="center">
+  <img height="500" src="https://github.com/IcaroMiranda98/Decskill-Frontend-challenge/blob/main/src/assets/image.png?raw=true" />
+</h1>
+
+## 💻 DecskillFrontendChallenge
+Aplicação construida com o objetivo de participar do processo seletivo para uma posição de Desenvolvedor Angular. O objetivo da aplição é a construção de uma timeline similar a encontrada no site do Twitter. 
+
+## ✨ Tecnologias
+
+-   [ ] Angular
+-   [ ] TailwindCss
+-   [ ] Material
+
+## Executando o projeto
+
+Utilize o **yarn** ou o **npm install** para instalar as dependências do projeto.
+Em seguida, inicie o projeto rodando o comando npm run start.
+
+<br />
+
 # DecskillFrontendChallenge
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
