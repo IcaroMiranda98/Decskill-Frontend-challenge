@@ -9,12 +9,12 @@
                 height="60"
             />
         </div>
-        <div class="flex-1 mx-2">
-            <div class="flex justify-end gap-1 items-baseline">
-                <h2 class="truncate">Ícaro Miranda</h2>
-                <h3 class="truncate">@icaromiranda</h3>
-                <h3 class="flex-none sm:hidden">- {{ tweet.dataTweet | formatTime:'hora' }}</h3>
-                <h3 class="flex-auto hidden sm:flex">- {{ tweet.dataTweet | formatTime }}</h3>
+        <div class="flex-1 flex flex-col mx-2">
+            <div class="flex-auto flex justify-end gap-1 items-baseline">
+                <h2 class="flex-auto sm:flex-none truncate ">Ícaro Miranda</h2>
+                <span class="flex-none truncate ">@icaromiranda</span>
+                <span class="flex-none sm:hidden ">- {{ tweet.dataTweet | formatTime:'hora' }}</span>
+                <span class="flex-auto hidden sm:flex ">- {{ tweet.dataTweet | formatTime }}</span>
                 <button
                     class="flex-none text-blue-500 hover:bg-blue-50 hover:rounded-full"
                     matTooltip="actions"
@@ -42,7 +42,7 @@
             </div>
             <textarea
                 readonly
-                class="w-full h-24 sm:h-auto outline-none focus:border-b transition-all resize-y"
+                class=" w-auto h-24 pr-2 sm:h-auto outline-none focus:border-b transition-all "
                 placeholder="O que está acontecendo?"
                 [value]="tweet.conteudoTweet"
             ></textarea>
