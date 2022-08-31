@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "tsc --noEmit && eslint . --ext js,ts,json --quiet --fix"
+    "lint": "tsc --noEmit && eslint . --ext js,ts,json --quiet --fix",
+    "deploy:ghdocs": "ng build --prod --output-path docs --base-href /Decskill-Frontend-challenge/"
   },
   "private": true,
   "dependencies": {
@@ -40,6 +41,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-angular": "^4.1.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "gh-pages": "^4.0.0",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
