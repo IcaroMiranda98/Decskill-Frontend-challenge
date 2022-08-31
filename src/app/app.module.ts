@@ -10,9 +10,11 @@ import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TweetComponent } from './tweet/tweet.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormatTime } from './pipe/format-time.pipe';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -32,8 +34,10 @@ import { FormatTime } from './pipe/format-time.pipe';
     ReactiveFormsModule,
     CommonModule,
     HttpClientModule,
+    MatMenuModule,
+    MatIconModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

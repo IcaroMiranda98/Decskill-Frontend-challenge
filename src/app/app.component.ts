@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, switchMap } from 'rxjs';
@@ -11,7 +11,7 @@ import { TweetService } from './service/tweet.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Decskill-Frontend-challenge';
 
   tweetForm!: FormGroup;
@@ -23,11 +23,19 @@ export class AppComponent {
     private fb: FormBuilder,
     private tweetService: TweetService
   ) {}
+
   ngOnInit() {
+    this._criaFormulario();
+    this._carregaTimeline();
+  }
+
+  private _criaFormulario() {
     this.tweetForm = this.fb.group({
       conteudoTweet: ['', [Validators.required, Validators.maxLength(130)]],
     });
+  }
 
+  private _carregaTimeline() {
     this.tweets$ = this.tweetService.getTweets();
   }
 
@@ -35,11 +43,14 @@ export class AppComponent {
     enterAnimationDuration: string,
     exitAnimationDuration: string
   ): void {
-    this.dialog.open(ConfirmModalComponent);
+    const dialogRef = this.dialog.open(ConfirmModalComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   newTweet() {
-    console.log('aqui');
     let newTweet = <Tweet>{
       dataTweet: new Date(),
       conteudoTweet: this.tweetForm.controls['conteudoTweet'].value,
@@ -48,15 +59,33 @@ export class AppComponent {
     this.tweetService
       .adicionaTweet(newTweet)
       .pipe(
-        switchMap((retorno) => {
-          console.log('1');
-
-          this.tweets$ = this.tweetService.getTweets();
-          return retorno;
+        switchMap((value: Tweet) => {
+          return (this.tweets$ = this.tweetService.getTweets());
         })
       )
       .subscribe((response) => {
-        console.log('2');
+        this.tweetForm.controls['conteudoTweet'].reset();
+      });
+  }
+
+  confirmaDelecaoTweet(tweet: Tweet) {
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      data: { tweet },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      result && this.removeTweet(tweet);
+    });
+  }
+  removeTweet(tweet: Tweet) {
+    this.tweetService
+      .removeTweet(tweet)
+      .pipe(
+        switchMap((value: boolean) => {
+          return (this.tweets$ = this.tweetService.getTweets());
+        })
+      )
+      .subscribe((response) => {
         this.tweetForm.controls['conteudoTweet'].reset();
       });
   }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Tweet } from '../models/tweet.model';
 
 @Component({
@@ -8,10 +8,16 @@ import { Tweet } from '../models/tweet.model';
 })
 export class TweetComponent implements OnInit {
   @Input() tweet: Tweet = new Tweet();
+  @Input() isReadonly: boolean = false;
+  @Output() removeTweetEvent = new EventEmitter<Tweet>();
 
   constructor() {}
 
   ngOnInit(): void {}
 
   getData() {}
+
+  remove(tweet: Tweet) {
+    this.removeTweetEvent.emit(tweet);
+  }
 }

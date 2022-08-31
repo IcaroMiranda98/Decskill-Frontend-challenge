@@ -8,26 +8,46 @@ import { v4 as uuidv4 } from 'uuid';
   providedIn: 'root',
 })
 export class TweetService {
-  constructor(private http: HttpClient) {}
+  _tweets: Array<Tweet> = [];
 
-  adicionaTweet(tweet: Tweet) {
-    let tweets = JSON.parse(localStorage.getItem('tweets')!);
-    if (!tweets) tweets = new Array<Tweet>();
-    tweet.idTweet = uuidv4();
-    tweets.push(tweet);
-    this.ordenaTweetsData(tweets);
-    localStorage.setItem('tweets', JSON.stringify(tweets));
-    return of(tweets);
+  constructor() {
+    this._tweets = this._getTweetsLocalStorage();
+    this.ordenaTweetsData();
   }
 
-  private ordenaTweetsData(tweets: any) {
-    tweets.sort(
+  private _getTweetsLocalStorage() {
+    let tweets = JSON.parse(localStorage.getItem('tweets')!) as Array<Tweet>;
+    tweets.map((x) => (x.dataTweet = new Date(x.dataTweet)));
+    return tweets;
+  }
+
+  private _setTweetsLocalStorage(tweets: Array<Tweet>) {
+    localStorage.setItem('tweets', JSON.stringify(tweets));
+  }
+
+  adicionaTweet(tweet: Tweet) {
+    tweet.idTweet = uuidv4();
+    this._tweets.push(tweet);
+    this.ordenaTweetsData();
+    this._setTweetsLocalStorage(this._tweets);
+    return of(tweet);
+  }
+
+  removeTweet(tweet: Tweet) {
+    this._tweets = this._tweets.filter((x) => x.idTweet !== tweet.idTweet);
+    this.ordenaTweetsData();
+    this._setTweetsLocalStorage(this._tweets);
+    return of(true);
+  }
+
+  private ordenaTweetsData() {
+    this._tweets.sort(
       (a: Tweet, b: Tweet) => b.dataTweet.getTime() - a.dataTweet.getTime()
     );
   }
 
   getTweets() {
     let tweets = JSON.parse(localStorage.getItem('tweets')!);
-    return of(tweets ? tweets : new Array<Tweet>());
+    return of(this._tweets);
   }
 }

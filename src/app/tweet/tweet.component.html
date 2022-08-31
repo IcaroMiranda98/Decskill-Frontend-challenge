@@ -18,9 +18,24 @@
           class="flex-none text-blue-500 hover:bg-blue-50 hover:rounded-full"
           matTooltip="actions"
           type="button"
+          [matMenuTriggerFor]="menu"
+          [disabled]="isReadonly"
         >
           <span class="material-symbols-outlined"> More_Horiz </span>
         </button>
+        <mat-menu #menu="matMenu">
+          <button
+            mat-menu-item
+            class="align-top"
+            (click)="remove(tweet)"
+            [disabled]="isReadonly"
+          >
+            <span class="material-symbols-outlined mat-icon material-icons">
+              delete
+            </span>
+            <span>Remover</span>
+          </button>
+        </mat-menu>
       </div>
       <textarea
         readonly
@@ -31,12 +46,14 @@
       <div class="flex w-full justify-end">
         <div class="flex-1 flex gap-24">
           <button
+            [disabled]="isReadonly"
             class="text-blue-500 hover:bg-blue-50 hover:rounded-full"
             matTooltip="Reply"
           >
             <span class="material-symbols-outlined"> mode_comment </span>
           </button>
           <button
+            [disabled]="isReadonly"
             class="text-blue-500 hover:bg-green-50 hover:rounded-full hover:text-green-300"
             type="button"
             matTooltip="Retweet"
@@ -47,18 +64,21 @@
             class="text-blue-500 hover:bg-red-50 hover:rounded-full hover:text-red-300"
             type="button"
             matTooltip="Like"
+            [disabled]="isReadonly"
           >
             <span class="material-symbols-outlined"> Favorite </span>
           </button>
           <button
             type="button"
             class="text-blue-500 hover:bg-blue-50 hover:rounded-full"
+            [disabled]="isReadonly"
             matTooltip="Share"
           >
             <span class="material-symbols-outlined"> file_Upload </span>
           </button>
           <button
             class="text-blue-500 hover:bg-blue-50 hover:rounded-full"
+            [disabled]="isReadonly"
             type="button"
           >
             <span class="material-symbols-outlined"> bar_chart </span>

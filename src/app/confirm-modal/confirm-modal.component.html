@@ -1,8 +1,10 @@
-<h1 mat-dialog-title>Delete file</h1>
-<div mat-dialog-content>
-  Would you like to delete cat.jpeg?
-</div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>No</button>
-  <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
-</div>
+<h2 mat-dialog-title>Delete Tweet?</h2>
+<mat-dialog-content class="mat-typography">
+  <p>This can’t be undone and it will be removed from your profile, the timeline of any accounts that follow you, and from Twitter search results.</p>
+  <app-tweet [tweet]="data.tweet" [isReadonly]="true" ></app-tweet>
+  
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button class="bg-blue-500 text-white" mat-dialog-close>Cancelar</button>
+  <button mat-button  [mat-dialog-close]="true" color="warn" cdkFocusInitial>Remover</button>
+</mat-dialog-actions>
