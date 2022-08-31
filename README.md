@@ -3,7 +3,7 @@
 </h1>
 
 ## 💻 DecskillFrontendChallenge
-Aplicação construida com o objetivo de participar do processo seletivo para uma posição de Desenvolvedor Angular. O objetivo da aplição é a construção de uma timeline similar a encontrada no site do Twitter. 
+Aplicação construida com o objetivo de participar do processo seletivo para uma posição de Desenvolvedor Angular. O objetivo da aplição é a construção de uma timeline similar a encontrada no site do Twitter. Veja o deploy da aplicação [neste link](https://icaromiranda98.github.io/Decskill-Frontend-challenge/).
 
 ## ✨ Tecnologias
 
