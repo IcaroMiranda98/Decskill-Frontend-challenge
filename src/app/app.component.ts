@@ -50,11 +50,6 @@ export class AppComponent implements OnInit {
 
         this.tweetService
             .adicionaTweet(newTweet)
-            .pipe(
-                switchMap((value: Tweet) => {
-                    return (this.tweets$ = this.tweetService.getTweets());
-                })
-            )
             .subscribe((response) => {
                 this.tweetForm.controls['conteudoTweet'].reset();
             });
