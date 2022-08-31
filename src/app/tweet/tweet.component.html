@@ -11,9 +11,10 @@
         </div>
         <div class="flex-1 mx-2">
             <div class="flex justify-end gap-1 items-baseline">
-                <h2>Ícaro Miranda</h2>
-                <h3>@icaromiranda</h3>
-                <h3 class="flex-auto">- {{ tweet.dataTweet | formatTime }}</h3>
+                <h2 class="truncate">Ícaro Miranda</h2>
+                <h3 class="truncate">@icaromiranda</h3>
+                <h3 class="flex-none sm:hidden">- {{ tweet.dataTweet | formatTime:'hora' }}</h3>
+                <h3 class="flex-auto hidden sm:flex">- {{ tweet.dataTweet | formatTime }}</h3>
                 <button
                     class="flex-none text-blue-500 hover:bg-blue-50 hover:rounded-full"
                     matTooltip="actions"
@@ -41,12 +42,12 @@
             </div>
             <textarea
                 readonly
-                class="w-full outline-none focus:border-b transition-all resize-none"
+                class="w-full h-24 sm:h-auto outline-none focus:border-b transition-all resize-y"
                 placeholder="O que está acontecendo?"
                 [value]="tweet.conteudoTweet"
             ></textarea>
             <div class="flex w-full justify-end">
-                <div class="flex-1 flex gap-24">
+                <div class="flex-1 flex gap-24 hidden sm:flex">
                     <button
                         [disabled]="isReadonly"
                         class="text-blue-500 hover:bg-blue-50 hover:rounded-full"
