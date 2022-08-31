@@ -1,90 +1,100 @@
 <div class="flex-1 border p-4">
-  <div class="flex gap-2 items-start">
-    <div class="flex-none">
-      <img
-        class="rounded-full shadow-lg"
-        src="../assets/profiler_linkedin.jpeg"
-        alt="avatar"
-        width="60"
-        height="60"
-      />
-    </div>
-    <div class="flex-1 mx-2">
-      <div class="flex justify-end gap-1 items-baseline">
-        <h2>Ícaro Miranda</h2>
-        <h3>@icaromiranda</h3>
-        <h3 class="flex-auto">- {{ tweet.dataTweet | formatTime }}</h3>
-        <button
-          class="flex-none text-blue-500 hover:bg-blue-50 hover:rounded-full"
-          matTooltip="actions"
-          type="button"
-          [matMenuTriggerFor]="menu"
-          [disabled]="isReadonly"
-        >
-          <span class="material-symbols-outlined"> More_Horiz </span>
-        </button>
-        <mat-menu #menu="matMenu">
-          <button
-            mat-menu-item
-            class="align-top"
-            (click)="remove(tweet)"
-            [disabled]="isReadonly"
-          >
-            <span class="material-symbols-outlined mat-icon material-icons">
-              delete
-            </span>
-            <span>Remover</span>
-          </button>
-        </mat-menu>
-      </div>
-      <textarea
-        readonly
-        class="w-full outline-none focus:border-b transition-all resize-none"
-        placeholder="O que está acontecendo?"
-        [value]="tweet.conteudoTweet"
-      ></textarea>
-      <div class="flex w-full justify-end">
-        <div class="flex-1 flex gap-24">
-          <button
-            [disabled]="isReadonly"
-            class="text-blue-500 hover:bg-blue-50 hover:rounded-full"
-            matTooltip="Reply"
-          >
-            <span class="material-symbols-outlined"> mode_comment </span>
-          </button>
-          <button
-            [disabled]="isReadonly"
-            class="text-blue-500 hover:bg-green-50 hover:rounded-full hover:text-green-300"
-            type="button"
-            matTooltip="Retweet"
-          >
-            <span class="material-symbols-outlined"> share </span>
-          </button>
-          <button
-            class="text-blue-500 hover:bg-red-50 hover:rounded-full hover:text-red-300"
-            type="button"
-            matTooltip="Like"
-            [disabled]="isReadonly"
-          >
-            <span class="material-symbols-outlined"> Favorite </span>
-          </button>
-          <button
-            type="button"
-            class="text-blue-500 hover:bg-blue-50 hover:rounded-full"
-            [disabled]="isReadonly"
-            matTooltip="Share"
-          >
-            <span class="material-symbols-outlined"> file_Upload </span>
-          </button>
-          <button
-            class="text-blue-500 hover:bg-blue-50 hover:rounded-full"
-            [disabled]="isReadonly"
-            type="button"
-          >
-            <span class="material-symbols-outlined"> bar_chart </span>
-          </button>
+    <div class="flex gap-2 items-start">
+        <div class="flex-none">
+            <img
+                class="rounded-full shadow-lg"
+                src="../assets/profiler_linkedin.jpeg"
+                alt="avatar"
+                width="60"
+                height="60"
+            />
         </div>
-      </div>
+        <div class="flex-1 mx-2">
+            <div class="flex justify-end gap-1 items-baseline">
+                <h2>Ícaro Miranda</h2>
+                <h3>@icaromiranda</h3>
+                <h3 class="flex-auto">- {{ tweet.dataTweet | formatTime }}</h3>
+                <button
+                    class="flex-none text-blue-500 hover:bg-blue-50 hover:rounded-full"
+                    matTooltip="actions"
+                    type="button"
+                    [matMenuTriggerFor]="menu"
+                    [disabled]="isReadonly"
+                >
+                    <span class="material-symbols-outlined"> More_Horiz </span>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button
+                        mat-menu-item
+                        class="align-top"
+                        (click)="remove(tweet)"
+                        [disabled]="isReadonly"
+                    >
+                        <span
+                            class="material-symbols-outlined mat-icon material-icons"
+                        >
+                            delete
+                        </span>
+                        <span>Remover</span>
+                    </button>
+                </mat-menu>
+            </div>
+            <textarea
+                readonly
+                class="w-full outline-none focus:border-b transition-all resize-none"
+                placeholder="O que está acontecendo?"
+                [value]="tweet.conteudoTweet"
+            ></textarea>
+            <div class="flex w-full justify-end">
+                <div class="flex-1 flex gap-24">
+                    <button
+                        [disabled]="isReadonly"
+                        class="text-blue-500 hover:bg-blue-50 hover:rounded-full"
+                        matTooltip="Reply"
+                    >
+                        <span class="material-symbols-outlined">
+                            mode_comment
+                        </span>
+                    </button>
+                    <button
+                        [disabled]="isReadonly"
+                        class="text-blue-500 hover:bg-green-50 hover:rounded-full hover:text-green-300"
+                        type="button"
+                        matTooltip="Retweet"
+                    >
+                        <span class="material-symbols-outlined"> share </span>
+                    </button>
+                    <button
+                        class="text-blue-500 hover:bg-red-50 hover:rounded-full hover:text-red-300"
+                        type="button"
+                        matTooltip="Like"
+                        [disabled]="isReadonly"
+                    >
+                        <span class="material-symbols-outlined">
+                            Favorite
+                        </span>
+                    </button>
+                    <button
+                        type="button"
+                        class="text-blue-500 hover:bg-blue-50 hover:rounded-full"
+                        [disabled]="isReadonly"
+                        matTooltip="Share"
+                    >
+                        <span class="material-symbols-outlined">
+                            file_Upload
+                        </span>
+                    </button>
+                    <button
+                        class="text-blue-500 hover:bg-blue-50 hover:rounded-full"
+                        [disabled]="isReadonly"
+                        type="button"
+                    >
+                        <span class="material-symbols-outlined">
+                            bar_chart
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

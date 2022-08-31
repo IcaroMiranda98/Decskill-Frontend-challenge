@@ -17,27 +17,27 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ConfirmModalComponent,
-    TweetComponent,
-    FormatTime,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatButtonModule,
-    BrowserAnimationsModule,
-    MatDialogModule,
-    MatTooltipModule,
-    FormsModule,
-    ReactiveFormsModule,
-    CommonModule,
-    HttpClientModule,
-    MatMenuModule,
-    MatIconModule,
-  ],
-  providers: [DatePipe],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        ConfirmModalComponent,
+        TweetComponent,
+        FormatTime,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatButtonModule,
+        BrowserAnimationsModule,
+        MatDialogModule,
+        MatTooltipModule,
+        FormsModule,
+        ReactiveFormsModule,
+        CommonModule,
+        HttpClientModule,
+        MatMenuModule,
+        MatIconModule,
+    ],
+    providers: [DatePipe],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}
